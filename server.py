@@ -19,7 +19,7 @@ def welcome():
 
 @app.route('/login', methods = ['POST'])
 def login():
-   name = Template('{"username": "$username"}').safe_substitute(username = request.form['username'])
+   name = Template('{"username": "$name"}').safe_substitute(name = request.form['username'])
    r = requests.post('https://hunter-todo-api.herokuapp.com/auth', data = name)
    if (r.status_code == 200):
 	   cookie = r.json()
@@ -30,7 +30,7 @@ def login():
 @app.route('/register', methods = ['POST', 'GET'])
 def register():
 	if request.method == 'POST':
-		name = Template('{"username": "$username"}').safe_substitute(username = request.form['new_username'])
+		name = Template('{"username": "$name"}').safe_substitute(name = request.form['new_username'])
 		requests.post('https://hunter-todo-api.herokuapp.com/user', data = name)
 		return redirect('/')
 	else:
@@ -56,14 +56,12 @@ def delete(task_name):
 
 @app.route('/done/<task_name>')
 def done(task_name):
-	task = '{"completed": true}'
-	r = requests.put('https://hunter-todo-api.herokuapp.com/todo-item/' + task_name , data = task, cookies = request.cookies)
+	r = requests.put('https://hunter-todo-api.herokuapp.com/todo-item/' + task_name , data = '{"completed": true}', cookies = request.cookies)
 	return redirect('/')
 
 @app.route('/notdone/<task_name>')
 def notdone(task_name):	
-	task = '{"completed": false}'
-	r = requests.put('https://hunter-todo-api.herokuapp.com/todo-item/'+ task_name , data = task, cookies = request.cookies)
+	r = requests.put('https://hunter-todo-api.herokuapp.com/todo-item/'+ task_name , data = '{"completed": false}', cookies = request.cookies)
 	return redirect('/')
 
 if __name__ == "__main__":
