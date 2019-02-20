@@ -19,14 +19,14 @@ def welcome():
 
 @app.route('/login', methods = ['POST'])
 def login():
-   name = Template('{"username": "$name"}').safe_substitute(name = request.form['username'])
-   r = requests.post('https://hunter-todo-api.herokuapp.com/auth', data = name)
-   if (r.status_code == 200):
+	name = Template('{"username": "$name"}').safe_substitute(name = request.form['username'])
+	r = requests.post('https://hunter-todo-api.herokuapp.com/auth', data = name)
+	if (r.status_code == 200):
 	   cookie = r.json()
 	   resp = make_response(redirect('/'))
 	   resp.set_cookie('sillyauth', cookie['token'])
 	   return resp 
-	
+
 @app.route('/register', methods = ['POST', 'GET'])
 def register():
 	if request.method == 'POST':
