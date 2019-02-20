@@ -17,12 +17,12 @@
 					{% if todo.completed == false %}
 						{{todo.content}}
 						<a href = "/delete/{{todo.id}}"><button>delete</button></a>
-						<a href = "/done/{{todo.id}}"><button>Done</button></a>
+						<a href = "/done/{{todo.id}}/true"><button>Done</button></a>
 					{% else %}
 						
 						<strike> {{todo.content}}</strike>
 						<a href = "/delete/{{todo.id}}"><button>delete</button></a>
-						<a href = "/notdone/{{todo.id}}"><button>Undo</button></a>
+						<a href = "/done/{{todo.id}}/false"><button>Undo</button></a>
 					{% endif %}
 			
 					</li>

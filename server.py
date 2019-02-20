@@ -54,19 +54,18 @@ def delete(task_name):
 	requests.delete('https://hunter-todo-api.herokuapp.com/todo-item/' + task_name , cookies = request.cookies)
 	return redirect('/')
 
-@app.route('/done/<task_name>')
-def done(task_name):
-	r = requests.put('https://hunter-todo-api.herokuapp.com/todo-item/' + task_name , data = '{"completed": true}', cookies = request.cookies)
-	return redirect('/')
-
-@app.route('/notdone/<task_name>')
-def notdone(task_name):	
-	r = requests.put('https://hunter-todo-api.herokuapp.com/todo-item/'+ task_name , data = '{"completed": false}', cookies = request.cookies)
-	return redirect('/')
+@app.route('/done/<task_name>/<status>')
+def done(task_name, status):
+	if status == "true":
+		r = requests.put('https://hunter-todo-api.herokuapp.com/todo-item/' + task_name , data = '{"completed": true}', cookies = request.cookies)
+		return redirect('/')
+	if status == "false":
+		r = requests.put('https://hunter-todo-api.herokuapp.com/todo-item/'+ task_name , data = '{"completed": false}', cookies = request.cookies)
+		return redirect('/')
 
 if __name__ == "__main__":
 	port = int(os.environ.get("PORT", 5000))
-	app.run(host="0.0.0.0", port=port, threaded=True)
+	app.run(host="0.0.0.0", port=port, threaded=True, debug = True)
 
 
 
