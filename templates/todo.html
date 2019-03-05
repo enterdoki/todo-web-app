@@ -2,39 +2,45 @@
 <html>
 	<head>
 		<title>To Do List Web App</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	</head>
-	<body style="background-color:powderblue;">
+	<body style="background-color:Azure;">
 
 		<h1 ALIGN = "middle">TO DO LIST</h1>
 		<div>
-		<img src ="/static/todo.png" ALIGN = "right" alt="Image taken from Google.com" height="225" width="225">
-
+			<img src ="/static/todo.png" ALIGN = "right" alt="Image taken from Google.com" height="225" width="225">
 		</div>	
-		
+
+		<div class = "todo"
 			<ul>	
 				{% for todo in todos %}
 					<li>
 					{% if todo.completed == false %}
 						{{todo.content}}
-						<a href = "/delete/{{todo.id}}"><button>delete</button></a>
-						<a href = "/done/{{todo.id}}/true"><button>Done</button></a>
+						<a href = "/delete/{{todo.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+						<a href = "/done/{{todo.id}}/true"><button type="button" class="btn btn-success">Done</button></a>
+						
 					{% else %}
 						
 						<strike> {{todo.content}}</strike>
-						<a href = "/delete/{{todo.id}}"><button>delete</button></a>
-						<a href = "/done/{{todo.id}}/false"><button>Undo</button></a>
+						<a href = "/delete/{{todo.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+						<a href = "/done/{{todo.id}}/false"><button type="button" class="btn btn-success">Undo</button></a>
 					{% endif %}
 			
 					</li>
 				{% endfor %}
 			</ul>
-		
+		</div><br>
 
 	<div>
 		<form action = "/add " method = "post">
 			Task to add:
 			<input type= "text" name = "new_task">
-			<input type="submit" value="submit">	
+			<input class="btn btn-primary" type="submit" value="Submit">	
 		</form>
 
 		
@@ -42,7 +48,7 @@
 
 
 	<br><br><br><br><br><br><br><br>
-	<a href = "/logout"><button>Log Out</button></a>
+	<a href = "/logout"><input class="btn btn-primary" type="submit" value="Sign Out">
 		
 				 
 	</form>

@@ -2,19 +2,27 @@
 
 	<head>
 		<title>Register page</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	</head>
-	<body style="background-color:powderblue;">
-		<form action = "/register" ALIGN= "middle" method = "post">
+	<body style="background-color:Azure;">
+		<div class = "container">
+			<form action = "/register" ALIGN= "middle" method = "post">
 				<h1> Sign up page: <br><br>
 					<img src ="/static/scientist.jpg" alt="Image taken from Google.com" height="225" width="225">
 
 					<h3> Please sign up here with a cool username: </h3>
-					<input type="text" name = 'new_username'><br>
-					<input type="submit" value="Sign Up"><br>
+					<input type="text" name = 'new_username'><br><br>
+					<input class="btn btn-primary" type="submit" value="Submit">
 					
 				</h1>
 				 
-		</form>
+			</form>
+		</div>
+		
 
 		
 	</body>
