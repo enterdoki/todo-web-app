@@ -1,2 +1,2 @@
 * linguist-vendored
-*.js linguist-vendored=Python
+*.js linguist-language=Java
