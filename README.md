@@ -1,6 +1,7 @@
 # To-Do List Web App
 
 Languages Used: Python (Flask), HTML
+
 Database: Amazon RDS MySQL
 
 Usages:
