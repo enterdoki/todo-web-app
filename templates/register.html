@@ -17,7 +17,12 @@
 					<h3> Please sign up here with a cool username: </h3>
 					<input type="text" name = 'new_username'><br><br>
 					<input class="btn btn-primary" type="submit" value="Submit">
-					
+					<div class="flashes">
+					<br>
+					  {% for message in get_flashed_messages() %}
+					    {{ message }}
+					  {% endfor %}
+					</div>
 				</h1>
 				 
 			</form>

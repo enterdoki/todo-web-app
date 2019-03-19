@@ -19,16 +19,16 @@
 			<ul>	
 				{% for todo in todos %}
 					<li>
-					{% if todo.completed == false %}
-						{{todo.content}}
-						<a href = "/delete/{{todo.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
-						<a href = "/done/{{todo.id}}/true"><button type="button" class="btn btn-success">Done</button></a>
+					{% if todo[2] == 0 %}
+						{{todo[1]}}
+						<a href = "/delete/{{todo[0]}}"><button type="button" class="btn btn-danger">Delete</button></a>
+						<a href = "/complete/{{todo[0]}}"><button type="button" class="btn btn-success">Done</button></a>
 						
 					{% else %}
 						
-						<strike> {{todo.content}}</strike>
-						<a href = "/delete/{{todo.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
-						<a href = "/done/{{todo.id}}/false"><button type="button" class="btn btn-success">Undo</button></a>
+						<strike> {{todo[1]}}</strike>
+						<a href = "/delete/{{todo[0]}}"><button type="button" class="btn btn-danger">Delete</button></a>
+						<a href = "/uncomplete/{{todo[0]}}"><button type="button" class="btn btn-success">Undo</button></a>
 					{% endif %}
 			
 					</li>
@@ -47,7 +47,7 @@
 	</div>
 
 
-	<br><br><br><br><br><br><br><br>
+	<br><br><br>
 	<a href = "/logout"><input class="btn btn-primary" type="submit" value="Sign Out">
 		
 				 
